@@ -1,5 +1,5 @@
 {
-  "homepage": "https://depaier.com",
+  "homepage": "https://depaier.github.io/depaier.github.io",
   "name": "depaier.github.io",
   "private": true,
   "version": "0.0.0",
@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "echo 'depaier.com' > ./build/CNAME && gh-pages -d build",
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
