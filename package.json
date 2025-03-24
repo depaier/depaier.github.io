@@ -1,4 +1,7 @@
 {
+  "homepage": "https://depaier.github.io/",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist",
   "name": "depaier.github.io",
   "private": true,
   "version": "0.0.0",
