@@ -64,7 +64,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             <ProjectLinks>
               {project.link && (
                 <ProjectLink href={project.link} target="_blank" rel="noopener noreferrer">
-                  View Live
+                  App Store
                 </ProjectLink>
               )}
             </ProjectLinks>

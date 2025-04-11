@@ -15,10 +15,9 @@ const Projects = ({ onProjectClick }: ProjectsProps) => {
       thumbnail: '/miniFilm.png',
       details: 'A film camera app with a minimalist and film camera feel',
       technologies: ['SwiftUI', 'Swift', 'Xcode'],
-      link: 'https://example.com/ecommerce',
+      link: 'https://apps.apple.com/kr/app/minifilm-%EC%9E%91%EC%9D%80-%ED%95%84%EB%A6%84-%EC%B9%B4%EB%A9%94%EB%9D%BC/id6742413203',
     },
   ];
-
   return (
     <ProjectsSection id="projects">
       <div className="container">
