@@ -91,7 +91,8 @@ const FooterLinksGroup = styled.div`
 
 const FooterLinksTitle = styled.h4`
   font-size: 0.8rem;
-  color: var(--light-text-color);
+  font-weight: 700;
+  margin-top: 0.9rem;
 `;
 
 const FooterExternalLink = styled.a`
