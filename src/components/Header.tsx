@@ -37,8 +37,9 @@ const Header = () => {
           <Logo onClick={() => window.scrollTo(0, 0)}>depaier</Logo>
           
           <DesktopMenu>
-            <MenuItem onClick={() => scrollToSection('projects')}>Projects</MenuItem>
-            <MenuItem onClick={() => scrollToSection('contact')}>Contact</MenuItem>
+            <MenuItem onClick={() => scrollToSection('apps')}>앱</MenuItem>
+            <MenuItem onClick={() => scrollToSection('templates')}>템플릿</MenuItem>
+            <MenuItem onClick={() => scrollToSection('contact')}>연락하기</MenuItem>
           </DesktopMenu>
           
           <MobileMenuToggle onClick={toggleMobileMenu}>
@@ -50,8 +51,9 @@ const Header = () => {
       </div>
       
       <MobileMenu isOpen={isMobileMenuOpen}>
-        <MenuItem onClick={() => scrollToSection('projects')}>Projects</MenuItem>
-        <MenuItem onClick={() => scrollToSection('contact')}>Contact</MenuItem>
+        <MenuItem onClick={() => scrollToSection('apps')}>앱</MenuItem>
+        <MenuItem onClick={() => scrollToSection('templates')}>템플릿</MenuItem>
+        <MenuItem onClick={() => scrollToSection('contact')}>연락하기</MenuItem>
       </MobileMenu>
     </HeaderContainer>
   );

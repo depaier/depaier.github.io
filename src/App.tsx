@@ -1,10 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import Header from './components/Header'
 import Hero from './components/Hero'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
 import ProjectModal from './components/ProjectModal'
 import GlobalStyle from './styles/GlobalStyle'
 
@@ -23,10 +19,6 @@ export interface Project {
 function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   
-  const openProjectModal = (project: Project) => {
-    setSelectedProject(project)
-  }
-  
   const closeProjectModal = () => {
     setSelectedProject(null)
   }
@@ -35,13 +27,9 @@ function App() {
     <>
       <GlobalStyle />
       <AppContainer>
-        <Header />
         <MainContent>
           <Hero />
-          <Projects onProjectClick={openProjectModal} />
-          <Contact />
         </MainContent>
-        <Footer />
         {selectedProject && (
           <ProjectModal project={selectedProject} onClose={closeProjectModal} />
         )}

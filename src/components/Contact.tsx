@@ -57,25 +57,24 @@ const Contact = () => {
   
   return (
     <ContactSection id="contact">
-      <div className="container">
-        <SectionTitle>Contact Me</SectionTitle>
+      <ContactContent>
+        <SectionTitle>연락하기</SectionTitle>
         
         <ContactContainer>
           <ContactInfo>
             <InfoTitle>Get in Touch</InfoTitle>
             <InfoText>
-              Feel free to reach out to me for any project inquiries, collaboration 
-              opportunities, or if you just want to say hello.
+              프로젝트 문의, 협업 기회 또는 인사말이 있으시면 언제든지 연락해 주세요.
             </InfoText>
             
             <ContactDetails>
               <ContactItem>
                 <ContactIcon>📧</ContactIcon>
-                <ContactText>depaier@depaier.com</ContactText>
+                <ContactText>depaier7@gmail.com</ContactText>
               </ContactItem>
               <ContactItem>
                 <ContactIcon>📍</ContactIcon>
-                <ContactText>Paju, South Korea</ContactText>
+                <ContactText>파주, 대한민국</ContactText>
               </ContactItem>
             </ContactDetails>
             
@@ -87,34 +86,22 @@ const Contact = () => {
           
           <ContactForm onSubmit={handleSubmit}>
             <FormGroup>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>이름</FormLabel>
               <FormInput 
                 type="text" 
                 name="name" 
-                placeholder="Your Name" 
+                placeholder="당신의 이름" 
                 value={formData.name} 
                 onChange={handleChange}
                 required
               />
             </FormGroup>
             
-            {/* <FormGroup>
-              <FormLabel>Email</FormLabel>
-              <FormInput 
-                type="email" 
-                name="email" 
-                placeholder="Your Email" 
-                value={formData.email} 
-                onChange={handleChange}
-                required
-              />
-            </FormGroup> */}
-            
             <FormGroup>
-              <FormLabel>Message</FormLabel>
+              <FormLabel>메시지</FormLabel>
               <FormTextarea 
                 name="message" 
-                placeholder="Your Message" 
+                placeholder="메시지를 입력해주세요" 
                 value={formData.message} 
                 onChange={handleChange}
                 required
@@ -125,53 +112,58 @@ const Contact = () => {
               type="submit" 
               disabled={formStatus === 'submitting'}
             >
-              {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
+              {formStatus === 'submitting' ? '전송 중...' : '메시지 보내기'}
             </SubmitButton>
             
             {formStatus === 'success' && (
-              <FormMessage success>Your message has been sent successfully!</FormMessage>
+              <FormMessage success>메시지가 성공적으로 전송되었습니다!</FormMessage>
             )}
             
             {formStatus === 'error' && (
-              <FormMessage>There was an error sending your message. Please try again.</FormMessage>
+              <FormMessage>메시지 전송에 실패했습니다. 다시 시도해주세요.</FormMessage>
             )}
           </ContactForm>
         </ContactContainer>
-      </div>
+      </ContactContent>
     </ContactSection>
   );
 };
 
 const ContactSection = styled.section`
-  background-color: var(--secondary-background);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  
+  @media (max-width: 992px) {
+    padding: 40px 0;
+  }
+`;
+
+const ContactContent = styled.div`
+  padding: 0 60px;
+  max-width: 800px;
+  width: 100%;
+  
+  @media (max-width: 992px) {
+    padding: 0 20px;
+  }
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  text-align: center;
-  position: relative;
-  
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background-color: var(--primary-color);
-  }
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 40px;
+  text-align: left;
 `;
 
 const ContactContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 3rem;
   
-  @media (max-width: 992px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
   }
 `;
 
@@ -181,15 +173,17 @@ const ContactInfo = styled.div`
 `;
 
 const InfoTitle = styled.h3`
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-weight: 500;
 `;
 
 const InfoText = styled.p`
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+  font-size: 14px;
+  margin-bottom: 1.5rem;
   color: var(--light-text-color);
-  line-height: 1.7;
+  line-height: 1.5;
 `;
 
 const ContactDetails = styled.div`

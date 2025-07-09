@@ -1,15 +1,20 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
   :root {
     --primary-color: #015F82;
-    --text-color: #333;
-    --light-text-color: #888;
-    --background-color: #fff;
+    --text-color: #252525;
+    --light-text-color: #747474;
+    --background-color: #f9f5f0;
+    --dark-background: #252525;
+    --card-background: #fffdfb;
     --secondary-background: #f8f8f8;
-    --border-color: #eee;
+    --border-color: #727272;
+    --white: #ffffff;
     --header-height: 70px;
-    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    --font-korean: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     --max-width: 1200px;
   }
@@ -27,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: var(--font-sans);
+    font-family: var(--font-korean);
     line-height: 1.6;
     color: var(--text-color);
     background: var(--background-color);
@@ -54,7 +59,7 @@ const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
-    font-family: var(--font-sans);
+    font-family: var(--font-korean);
   }
 
   section {

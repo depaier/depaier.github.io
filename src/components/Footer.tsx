@@ -1,47 +1,48 @@
 import styled from 'styled-components';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  
   return (
     <FooterContainer>
-      <div className="container">
-        <FooterContent>
+      <FooterContent>
           <FooterLeft>
             <Logo>depaier</Logo>
             <FooterDescription>
-              A portfolio showcasing my work and ideas.
+              진정한 나로 살아가기 위한 콘텐츠와 제품을 만듭니다.
             </FooterDescription>
           </FooterLeft>
           
           <FooterLinks>
             <FooterLinksGroup>
-              <FooterLinksTitle>Navigation</FooterLinksTitle>
-              <FooterLink onClick={() => window.scrollTo(0, 0)}>Home</FooterLink>
-              <FooterLink onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>Projects</FooterLink>
-              <FooterLink onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>Contact</FooterLink>
-            </FooterLinksGroup>
-            
-            <FooterLinksGroup>
-              <FooterLinksTitle>Connect</FooterLinksTitle>
-              <FooterExternalLink href="https://github.com/depaier" target="_blank" rel="noopener noreferrer">GitHub</FooterExternalLink>
+              <FooterLinksTitle>소셜</FooterLinksTitle>
+              <FooterExternalLink href="https://www.instagram.com/depaier/" target="_blank" rel="noopener noreferrer">Instagram</FooterExternalLink>
               <FooterExternalLink href="https://www.threads.net/@depaier" target="_blank" rel="noopener noreferrer">Threads</FooterExternalLink>
             </FooterLinksGroup>
           </FooterLinks>
         </FooterContent>
         
         <FooterBottom>
-          <Copyright>&copy; {currentYear} depaier. All rights reserved.</Copyright>
+          <BusinessInfo>
+            <BusinessText>상호명 : depaier  |  대표자명 : 박진호</BusinessText>
+            <BusinessText>사업자등록번호 : 813-11-02598</BusinessText>
+            <BusinessText>통신판매업신고번호 : 제2025-경기파주-0997호</BusinessText>
+            <Copyright>&copy; 2025. depaier All rights reserved.</Copyright>
+          </BusinessInfo>
         </FooterBottom>
-      </div>
     </FooterContainer>
   );
 };
 
 const FooterContainer = styled.footer`
-  background-color: #212529;
-  color: #f8f9fa;
-  padding-top: 4rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 4rem 0 2rem 0;
+  padding-left: 85px;
+  margin-top: 4rem;
+  border-top: 1px solid var(--border-color);
+  
+  @media (max-width: 992px) {
+    padding-left: 20px;
+  }
 `;
 
 const FooterContent = styled.div`
@@ -67,7 +68,7 @@ const Logo = styled.div`
 
 const FooterDescription = styled.p`
   font-size: 0.95rem;
-  color: #adb5bd;
+  color: var(--light-text-color);
   line-height: 1.6;
 `;
 
@@ -89,43 +90,49 @@ const FooterLinksGroup = styled.div`
 `;
 
 const FooterLinksTitle = styled.h4`
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  color: #f8f9fa;
-`;
-
-const FooterLink = styled.div`
-  font-size: 0.95rem;
-  color: #adb5bd;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  
-  &:hover {
-    color: var(--primary-color);
-  }
+  font-size: 0.8rem;
+  color: var(--light-text-color);
 `;
 
 const FooterExternalLink = styled.a`
   font-size: 0.95rem;
-  color: #adb5bd;
-  transition: color 0.3s ease;
+  color: var(--light-text-color);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
   
   &:hover {
-    color: var(--primary-color);
+    color: var(--light-text-color);
+    opacity: 0.7;
+  }
+  
+  &:visited {
+    color: var(--light-text-color);
   }
 `;
 
 const FooterBottom = styled.div`
   padding: 1.5rem 0;
   margin-top: 3rem;
-  border-top: 1px solid #343a40;
-  text-align: center;
+  text-align: left;
+`;
+
+const BusinessInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+const BusinessText = styled.p`
+  font-size: 0.8rem;
+  color: var(--light-text-color);
+  margin: 0;
 `;
 
 const Copyright = styled.p`
-  font-size: 0.9rem;
-  color: #6c757d;
+  font-size: 0.8rem;
+  color: var(--light-text-color);
+  margin: 0;
+  margin-top: 1rem;
 `;
 
 export default Footer; 
