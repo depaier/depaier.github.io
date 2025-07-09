@@ -303,7 +303,7 @@ Error generating stack: `+e.message+`
 `,oy=B.div`
   display: grid;
   grid-template-columns: repeat(3, 250px);
-  grid-template-rows: repeat(2, 56px);
+  grid-template-rows: repeat(1, 56px);
   gap: 20px;
   
   @media (max-width: 992px) {
@@ -318,7 +318,7 @@ Error generating stack: `+e.message+`
 `,dy=B.div`
   display: grid;
   grid-template-columns: repeat(3, 250px);
-  grid-template-rows: repeat(2, 56px);
+  grid-template-rows: repeat(1, 56px);
   gap: 20px;
   
   @media (max-width: 992px) {
