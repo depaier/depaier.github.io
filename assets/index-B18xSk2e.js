@@ -92,7 +92,8 @@ Error generating stack: `+e.message+`
   gap: 0.5rem;
 `,Xv=B.h4`
   font-size: 0.8rem;
-  color: var(--light-text-color);
+  font-weight: 700;
+  margin-top: 0.9rem;
 `,b0=B.a`
   font-size: 0.95rem;
   color: var(--light-text-color);
