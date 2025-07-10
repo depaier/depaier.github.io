@@ -15,7 +15,7 @@ const Hero = () => {
           <ContentContainer>
             <Username>디파이어 I depaier</Username>
             <MainTitle>
-              <LargeText>나</LargeText>로
+              나로
               <br />
               살아가기 위해<EmojiIcon>💡</EmojiIcon>
             </MainTitle>
@@ -201,6 +201,7 @@ const ContentContainer = styled.div`
   
   @media (max-width: 992px) {
     padding-left: 20px;
+    padding-right: 20px;
     max-width: 100%;
     min-height: 100vh;
   }
@@ -224,13 +225,7 @@ const MainTitle = styled.h1`
   }
 `;
 
-const LargeText = styled.span`
-  font-size: 72px;
-  
-  @media (max-width: 768px) {
-    font-size: 54px;
-  }
-`;
+
 
 const EmojiIcon = styled.span`
   background: none !important;
@@ -254,7 +249,7 @@ const IntroLabel = styled.div`
 const IntroText = styled.p`
   font-size: 14px;
   color: var(--light-text-color);
-  line-height: 1.2;
+  line-height: 2;
   max-width: 497px;
 `;
 
