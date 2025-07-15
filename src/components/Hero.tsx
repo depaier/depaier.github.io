@@ -16,8 +16,10 @@ const Hero = () => {
             <Username>디파이어 I depaier</Username>
             <MainTitle>
               나로
+              
+              살아가는
               <br />
-              살아가기 위해<EmojiIcon>💡</EmojiIcon>
+              개발자<EmojiIcon>💡</EmojiIcon>
             </MainTitle>
             
             <IntroGroup>
