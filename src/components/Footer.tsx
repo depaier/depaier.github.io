@@ -1,33 +1,47 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Footer = () => {
   return (
     <FooterContainer>
       <FooterContent>
-          <FooterLeft>
-            <Logo>depaier</Logo>
-            <FooterDescription>
-              진정한 나로 살아가기 위한 콘텐츠와 제품을 만듭니다.
-            </FooterDescription>
-          </FooterLeft>
-          
-          <FooterLinks>
-            <FooterLinksGroup>
-              <FooterLinksTitle>소셜</FooterLinksTitle>
-              <FooterExternalLink href="https://www.instagram.com/depaier/" target="_blank" rel="noopener noreferrer">Instagram</FooterExternalLink>
-              <FooterExternalLink href="https://www.threads.net/@depaier" target="_blank" rel="noopener noreferrer">Threads</FooterExternalLink>
-            </FooterLinksGroup>
-          </FooterLinks>
-        </FooterContent>
-        
-        <FooterBottom>
-          <BusinessInfo>
-            <BusinessText>상호명 : depaier  |  대표자명 : 박진호</BusinessText>
-            <BusinessText>사업자등록번호 : 813-11-02598</BusinessText>
-            <BusinessText>통신판매업신고번호 : 제2025-경기파주-0997호</BusinessText>
-            <Copyright>&copy; 2025. depaier All rights reserved.</Copyright>
-          </BusinessInfo>
-        </FooterBottom>
+        <FooterLeft>
+          <Logo>depaier</Logo>
+          <FooterDescription>
+            창의적으로 문제를 해결하는 1인 개발자 입니다.
+          </FooterDescription>
+        </FooterLeft>
+
+        <FooterLinks>
+          <FooterLinksGroup>
+            <FooterLinksTitle>소셜</FooterLinksTitle>
+            <FooterExternalLink
+              href="https://www.instagram.com/depaier/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </FooterExternalLink>
+            <FooterExternalLink
+              href="https://www.threads.net/@depaier"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Threads
+            </FooterExternalLink>
+          </FooterLinksGroup>
+        </FooterLinks>
+      </FooterContent>
+
+      <FooterBottom>
+        <BusinessInfo>
+          <BusinessText>상호명 : depaier | 대표자명 : 박진호</BusinessText>
+          <BusinessText>사업자등록번호 : 813-11-02598</BusinessText>
+          <BusinessText>
+            통신판매업신고번호 : 제2025-경기파주-0997호
+          </BusinessText>
+          <Copyright>&copy; 2025. depaier All rights reserved.</Copyright>
+        </BusinessInfo>
+      </FooterBottom>
     </FooterContainer>
   );
 };
@@ -39,7 +53,7 @@ const FooterContainer = styled.footer`
   padding-left: 85px;
   margin-top: 4rem;
   border-top: 1px solid var(--border-color);
-  
+
   @media (max-width: 992px) {
     padding-left: 20px;
   }
@@ -49,7 +63,7 @@ const FooterContent = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -76,7 +90,7 @@ const FooterLinks = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  
+
   @media (max-width: 576px) {
     flex-direction: column;
     gap: 1.5rem;
@@ -100,12 +114,12 @@ const FooterExternalLink = styled.a`
   color: var(--light-text-color);
   text-decoration: none;
   transition: opacity 0.3s ease;
-  
+
   &:hover {
     color: var(--light-text-color);
     opacity: 0.7;
   }
-  
+
   &:visited {
     color: var(--light-text-color);
   }
@@ -136,4 +150,4 @@ const Copyright = styled.p`
   margin-top: 1rem;
 `;
 
-export default Footer; 
+export default Footer;
