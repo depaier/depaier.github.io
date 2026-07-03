@@ -1,0 +1,428 @@
+/* ── 폰트 (이 CSS는 /sora 청크에서만 로드됨) ───────────────────────── */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/variable/pretendardvariable.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* 온글잎 윤우체 (Ownglyph YoonwooChae) — 눈누 webfont */
+@font-face {
+  font-family: "Ownglyph YoonwooChae";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Yoonwoo.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── 페이지 레이아웃 ─────────────────────────────────────────────── */
+.sora-page {
+  --pretendard: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  --inter: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  min-height: 100vh;
+  width: 100%;
+  background: #ffffff;
+  color: #111111;
+  font-family: var(--pretendard);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sora-inner {
+  width: 100%;
+  max-width: 1120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.sora-left {
+  flex: 1 1 auto;
+  max-width: 560px;
+}
+
+.sora-title {
+  font-family: "Ownglyph YoonwooChae", var(--pretendard);
+  font-weight: 400;
+  font-size: clamp(34px, 5.2vw, 68px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 28px;
+  color: #111111;
+  white-space: nowrap;
+}
+
+.sora-subtitle {
+  font-family: var(--pretendard);
+  font-weight: 500;
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.7;
+  color: #9a9a9a;
+  margin: 0 0 44px;
+}
+
+/* ── 이메일 폼 ──────────────────────────────────────────────────── */
+.sora-form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 460px;
+}
+
+.sora-input-wrap {
+  flex: 1 1 auto;
+  background: #f2f2f0;
+  border-radius: 999px;
+  padding: 0 28px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.sora-input-wrap:focus-within {
+  background: #ededea;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.12);
+}
+
+.sora-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--pretendard);
+  font-size: 18px;
+  color: #333;
+}
+
+.sora-input::placeholder {
+  color: #b3b3b3;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sora-submit {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  background: #111111;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+.sora-submit:hover {
+  background: #000;
+}
+.sora-submit:active {
+  transform: scale(0.94);
+}
+.sora-submit:disabled {
+  cursor: default;
+  opacity: 0.65;
+}
+
+.sora-msg {
+  margin: 18px 4px 0;
+  font-family: var(--pretendard);
+  font-size: 15px;
+  min-height: 20px;
+}
+.sora-msg.ok {
+  color: #2a2a2a;
+}
+.sora-msg.err {
+  color: #d24a43;
+}
+
+/* ── 오른쪽: 아이폰 목업 ─────────────────────────────────────────── */
+.sora-right {
+  flex: 0 0 auto;
+}
+
+.phone-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.test-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--pretendard);
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  background: #f2f2f0;
+  border: none;
+  border-radius: 999px;
+  padding: 13px 24px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.test-btn:hover {
+  background: #e8e8e5;
+}
+.test-btn:active {
+  transform: scale(0.96);
+}
+
+.phone {
+  position: relative;
+  width: 320px;
+  line-height: 0;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.22));
+}
+
+/* 아이폰 프레임 이미지 (상태바·노치·홈인디케이터가 포함됨).
+   유리 화면 부분이 투명이라 콘텐츠 위에 올려 pointer-events는 통과시킨다. */
+.phone-frame {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 40;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 프레임 PNG(440×900)의 투명 유리 영역에 정확히 맞춘 앱 화면 */
+.phone-screen {
+  position: absolute;
+  left: 5%;
+  top: 2.1%;
+  width: 90%;
+  height: 95.1%;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #fafafa;
+  font-family: var(--inter);
+  z-index: 10;
+  line-height: normal;
+}
+
+/* 앱 헤더: 06.19 / 18:00 */
+.app-header {
+  position: absolute;
+  top: 54px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+.app-date {
+  font-family: var(--inter);
+  font-weight: 700;
+  font-size: 22px;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+.app-time {
+  font-family: var(--inter);
+  font-weight: 500;
+  font-size: 13px;
+  color: #b7b7b7;
+  margin-top: 4px;
+}
+
+/* 촬영/기록 뷰포트 (위에서 펴짐) */
+.sky-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 50;
+  background: #121212;
+}
+/* 촬영 사진 (앞) — 기록 단계에서 위로 슬라이드 */
+.sky-shot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  object-position: center 58%;
+  display: block;
+  z-index: 2;
+}
+/* 감정 기록 화면 (뒤, #121212) */
+.write-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #121212;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 26px;
+  font-family: var(--pretendard);
+}
+.write-prompt {
+  margin: 0 0 18px;
+  color: #ededed;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.55;
+  text-align: center;
+}
+.write-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  font-family: var(--pretendard);
+  font-size: 15px;
+  text-align: center;
+  padding: 9px 4px;
+  outline: none;
+}
+.write-input::placeholder {
+  color: rgba(255, 255, 255, 0.34);
+}
+.write-input:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.6);
+}
+.capture-flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  z-index: 70;
+  pointer-events: none;
+}
+
+/* 구름 (촬영 버튼으로 축소/이동) */
+/* 중앙 정렬은 anchor(정적 transform)가 담당하고,
+   y/scale 모션은 안쪽 .cloud가 담당한다 (transform 충돌 방지) */
+.cloud-anchor {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 170px;
+  transform: translate(-50%, -50%);
+  z-index: 55; /* 펴지는 촬영 화면(z:50) 위에 유지 */
+}
+.cloud {
+  position: relative;
+  width: 100%;
+  transform-origin: center center;
+}
+.cloud.is-button {
+  cursor: pointer;
+}
+.cloud-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+/* 촬영된 '작은 정사각형 조각'이 구름 안에 담김 (앱3).
+   컨테이너를 구름 실루엣으로 마스킹 → 조각이 구름 밖으로 튀어나오지 않음.
+   아웃라인(.cloud-img)은 위(z:2)에 그려진다. */
+.cloud-photo-clip {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  -webkit-mask: url("/sora/cloud-mask.png") center / 100% 100% no-repeat;
+  mask: url("/sora/cloud-mask.png") center / 100% 100% no-repeat;
+}
+.cloud-photo {
+  position: absolute;
+  left: 28%;
+  top: 42%;
+  width: 32%;
+  height: 32%;
+  object-fit: cover;
+  border-radius: 3px;
+  transform-origin: center center;
+}
+/* 촬영 안내: 스크린 기준 고정 위치 (구름 스케일 영향 X) */
+.cloud-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 98px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--inter);
+  font-size: 12px;
+  font-weight: 500;
+  color: #b8b8b8;
+  z-index: 56;
+  pointer-events: none;
+}
+
+/* 하단 바 (아이콘 ↔ 타이머) */
+.bottom-bar {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 216px;
+  z-index: 30;
+}
+/* 제공된 네비게이션바 이미지 (앱1과 동일한 얇은 pill) */
+.bar-nav {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+/* 타이머: 흰색 부분이 줄어듦 (네비게이션바와 같은 크기) */
+.bar-timer {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: #d9d9d6;
+  overflow: hidden;
+}
+.bar-timer-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: #ffffff;
+  border-radius: 999px;
+}
+.bar-timer-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--inter);
+  font-weight: 600;
+  font-size: 14px;
+  color: #9a9a97;
+  mix-blend-mode: multiply;
+}
+
+/* ── 반응형 ─────────────────────────────────────────────────────── */
+@media (max-width: 880px) {
+  .sora-inner {
+    flex-direction: column-reverse;
+    gap: 40px;
+    text-align: center;
+  }
+  .sora-left {
+    max-width: 100%;
+  }
+  .sora-form {
+    margin: 0 auto;
+  }
+}

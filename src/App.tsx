@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { Instagram, MessageCircle, ExternalLink, Mail } from "lucide-react";
 import { Button } from "./components/ui/button";
@@ -22,6 +23,7 @@ export default function App() {
     height: 0,
   });
   const containerRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Set initial window size
@@ -54,6 +56,14 @@ export default function App() {
 
   const projects = [
     {
+      title: "소라",
+      description: "매일 한 장, 당신의 하늘",
+      tech: "하늘 기록 앱 · Waitlist",
+      status: "출시 예정",
+      iconUrl: "/sora/logo.png",
+      route: "/sora",
+    },
+    {
       title: "miniFilm",
       description: "작은 필름 카메라",
       tech: "Swift, CoreData, LUT기반 필터",
@@ -81,6 +91,14 @@ export default function App() {
         "https://apps.apple.com/kr/app/melater-diary-for-future-me/id6748441398",
     },
   ];
+
+  const openProject = (project: (typeof projects)[number]) => {
+    if ("route" in project && project.route) {
+      navigate(project.route);
+    } else if ("linkUrl" in project && project.linkUrl) {
+      window.open(project.linkUrl, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <div
@@ -150,11 +168,10 @@ export default function App() {
                   <button
                     key={item.key}
                     onClick={() => setCurrentSection(item.key as Section)}
-                    className={`px-2 sm:px-4 py-2 rounded-full transition-all duration-300 relative z-10 text-sm sm:text-base whitespace-nowrap ${
-                      currentSection === item.key
-                        ? "text-primary-foreground"
-                        : "hover:bg-accent text-muted-foreground hover:text-foreground"
-                    }`}
+                    className={`px-2 sm:px-4 py-2 rounded-full transition-all duration-300 relative z-10 text-sm sm:text-base whitespace-nowrap ${currentSection === item.key
+                      ? "text-primary-foreground"
+                      : "hover:bg-accent text-muted-foreground hover:text-foreground"
+                      }`}
                   >
                     {currentSection === item.key && (
                       <motion.div
@@ -347,17 +364,10 @@ export default function App() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                         whileHover={{ y: -5 }}
-                        onClick={() =>
-                          project.linkUrl &&
-                          window.open(
-                            project.linkUrl,
-                            "_blank",
-                            "noopener,noreferrer"
-                          )
-                        }
+                        onClick={() => openProject(project)}
                       >
                         <div className="flex items-start gap-4 mb-4">
-                          <div className="w-16 h-16 rounded-xl overflow-hidden bg-muted flex-shrink-0">
+                          <div className="w-16 h-16 rounded-xl overflow-hidden bg-muted flex-shrink-0 border border-black/10">
                             <ImageWithFallback
                               src={project.iconUrl}
                               alt={`${project.title} icon`}
@@ -370,13 +380,14 @@ export default function App() {
                                 {project.title}
                               </h3>
                               <span
-                                className={`px-3 py-1 rounded-full text-xs flex-shrink-0 ${
-                                  project.status === "출시됨"
-                                    ? "bg-green-100 text-green-800"
-                                    : project.status === "개발중"
+                                className={`px-3 py-1 rounded-full text-xs flex-shrink-0 ${project.status === "출시됨"
+                                  ? "bg-green-100 text-green-800"
+                                  : project.status === "개발중"
                                     ? "bg-blue-100 text-blue-800"
-                                    : "bg-gray-100 text-gray-800"
-                                }`}
+                                    : project.status === "출시 예정"
+                                      ? "bg-purple-100 text-purple-800"
+                                      : "bg-gray-100 text-gray-800"
+                                  }`}
                               >
                                 {project.status}
                               </span>
@@ -391,12 +402,7 @@ export default function App() {
                               <button
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  project.linkUrl &&
-                                    window.open(
-                                      project.linkUrl,
-                                      "_blank",
-                                      "noopener,noreferrer"
-                                    );
+                                  openProject(project);
                                 }}
                                 className="p-1 hover:bg-accent rounded transition-colors group/link"
                               >
