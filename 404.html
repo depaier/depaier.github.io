@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>depaier</title>
+    <!--
+      GitHub Pages SPA 리다이렉트 트릭 (rafgraph/spa-github-pages).
+      /sora 같은 경로로 직접 접속하면 GitHub Pages는 404.html을 반환하는데,
+      이 스크립트가 경로를 쿼리스트링으로 인코딩해 index.html로 보내고,
+      index.html의 복원 스크립트가 원래 경로로 되돌린다.
+    -->
+    <script type="text/javascript">
+      var pathSegmentsToKeep = 0;
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          "//" +
+          l.hostname +
+          (l.port ? ":" + l.port : "") +
+          l.pathname
+            .split("/")
+            .slice(0, 1 + pathSegmentsToKeep)
+            .join("/") +
+          "/?/" +
+          l.pathname
+            .slice(1)
+            .split("/")
+            .slice(pathSegmentsToKeep)
+            .join("/")
+            .replace(/&/g, "~and~") +
+          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+          l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
