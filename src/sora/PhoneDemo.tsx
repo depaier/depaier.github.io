@@ -1,8 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Play } from "lucide-react";
+import CloudsScreen from "./CloudsScreen";
 
 type Phase = "idle" | "capture" | "write" | "result";
+type Tab = "home" | "clouds";
+
+// 하단 네비게이션 아이콘 (svg 원본 크기 유지)
+const NAV_ITEMS = [
+  { id: "home", src: "/sora/home.svg", w: 17 },
+  { id: "clouds", src: "/sora/cloud.svg", w: 20 },
+  { id: "doc", src: "/sora/doc.svg", w: 14 },
+  { id: "setting", src: "/sora/setting.svg", w: 16 },
+] as const;
 
 // 타이밍(ms)
 const START_DELAY_MS = 1000; // 버튼 클릭 후 시작까지
@@ -13,6 +23,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function PhoneDemo() {
   const [phase, setPhase] = useState<Phase>("idle");
+  const [tab, setTab] = useState<Tab>("home");
   const [cycle, setCycle] = useState(0); // 타이머 애니메이션 재시작용
   const [flash, setFlash] = useState(false);
   const [secs, setSecs] = useState(60);
@@ -25,11 +36,22 @@ export default function PhoneDemo() {
     window.clearTimeout(startRef.current);
     busy.current = false;
     setNote("");
+    setTab("home");
     setPhase("idle"); // 홈으로 리셋 (사진 제거)
     startRef.current = window.setTimeout(() => {
       setCycle((c) => c + 1);
       setPhase("capture");
     }, START_DELAY_MS);
+  };
+
+  // 네비게이션 탭 전환 (home/clouds만 동작)
+  const onNav = (id: (typeof NAV_ITEMS)[number]["id"]) => {
+    if (id !== "home" && id !== "clouds") return;
+    window.clearTimeout(startRef.current);
+    busy.current = false;
+    setFlash(false);
+    setPhase("idle");
+    setTab(id);
   };
 
   useEffect(() => () => window.clearTimeout(startRef.current), []);
@@ -73,6 +95,11 @@ export default function PhoneDemo() {
       <div className="phone">
         {/* 앱 화면 (프레임 뒤, 유리 영역에 배치) */}
         <div className="phone-screen">
+          {tab === "clouds" ? (
+            /* 두 번째 탭: 내 구름들 */
+            <CloudsScreen />
+          ) : (
+            <>
           {/* 앱 헤더 */}
           <div className="app-header">
             <div className="app-date">06.19</div>
@@ -189,17 +216,41 @@ export default function PhoneDemo() {
               />
             )}
           </AnimatePresence>
+            </>
+          )}
 
           {/* 하단 바: 네비게이션바 ↔ 타이머 */}
           <div className="bottom-bar">
-            <motion.img
+            <motion.nav
               className="bar-nav"
-              src="/sora/navbar.png"
-              alt="navigation"
               initial={false}
               animate={{ opacity: inButton ? 0 : 1, y: inButton ? 10 : 0 }}
               transition={{ duration: 0.4, ease }}
-            />
+              style={{ pointerEvents: inButton ? "none" : "auto" }}
+            >
+              {NAV_ITEMS.map((item) => {
+                const active =
+                  (item.id === "home" && tab === "home") ||
+                  (item.id === "clouds" && tab === "clouds");
+                return (
+                  <button
+                    key={item.id}
+                    className={`bar-nav-item${active ? " active" : ""}`}
+                    onClick={() => onNav(item.id)}
+                    aria-label={item.id}
+                  >
+                    {active && (
+                      <motion.span
+                        className="bar-nav-dot"
+                        layoutId="bar-nav-dot"
+                        transition={{ duration: 0.35, ease }}
+                      />
+                    )}
+                    <img src={item.src} alt="" style={{ width: item.w }} />
+                  </button>
+                );
+              })}
+            </motion.nav>
             <motion.div
               className="bar-timer"
               initial={false}
